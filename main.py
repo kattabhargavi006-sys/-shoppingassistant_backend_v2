@@ -3,7 +3,7 @@ from langchain_core.tools import tool
 from fastapi.middleware.cors import CORSMiddleware
 from langgraph.prebuilt import create_react_agent
 from langchain_groq import ChatGroq
-from tavily import TavilyClient
+from tavily.client import TavilyClient
 from dotenv import load_dotenv
 import os
 import json,re
