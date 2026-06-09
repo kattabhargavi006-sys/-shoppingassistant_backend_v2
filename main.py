@@ -1,5 +1,4 @@
 from fastapi import FastAPI,Query
-from langchain.tools import tool
 from langchain_core.tools import tool
 from fastapi.middleware.cors import CORSMiddleware
 from langgraph.prebuilt import create_react_agent
@@ -76,7 +75,7 @@ def price_compare(product: str):
         query=f"{product} price Amazon Flipkart Croma Meesho",
         max_results=7
     )
-    text = "\n".join(r["content"] for r in result["results"])
+    text = "\n".join(r.get("content", r.get("snippet", "")) for r in result["results"])
     prompt = f"""
 Extract price comparison for: {product}
 
